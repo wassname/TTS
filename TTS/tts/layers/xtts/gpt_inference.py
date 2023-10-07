@@ -92,7 +92,7 @@ class GPT2InferenceModel(GPT2PreTrainedModel):
         else:
             emb = self.embeddings(input_ids)
             emb = emb + self.pos_embedding.get_fixed_embedding(
-                attention_mask.shape[1] - (prefix_len + 1), attention_mask.device
+                attention_mask.shape[1] - (prefix_len + 2), attention_mask.device
             )
         transformer_outputs = self.transformer(
             inputs_embeds=emb,
